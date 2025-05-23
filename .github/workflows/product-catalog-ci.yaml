@@ -56,12 +56,13 @@ jobs:
         name: gitleaks
         runs-on: ubuntu-latest
         steps:
-        - uses: actions/checkout@v4
-          with:
-            fetch-depth: 0
-        - uses: gitleaks/gitleaks-action@v2
-          env:
-            GITHUB_TOKEN: ${{ secrets.product_catalog_TOKEN }}
+          - name: Checkout Code
+            uses: actions/checkout@v3
+    
+          - name: Run Gitleaks
+            uses: gitleaks/gitleaks-action@v2
+            with:
+              github_token: ${{ secrets.GITHUB_TOKEN }}
     
     Build-with-Docker:
         runs-on: ubuntu-latest
@@ -113,7 +114,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
               with:
-                  token: ${{ secrets.PRODUCT_CATALOG_TOKEN }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
               
             - name: Update k8s deployment file
               run: |
@@ -125,9 +126,6 @@ jobs:
                 git config --global user.name "mahmoudsoli"
                 git add K8S/deployment.yaml
                 git commit -m "[CI] Update deployment image"
-                git push origin HEAD:main -f
-    
+                git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/mahmoudsoli/ITI-Product-Catalog.git HEAD:main -f
 
               
-
-
