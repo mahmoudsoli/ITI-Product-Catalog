@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+
+name: First Product Catalog CI
+=======
 name:  Product Catalog CI
+>>>>>>> f16fa81e419f47ce5ac462eea005983727cd7bd8
 on:
   pull_request:
     branches:
@@ -56,13 +61,12 @@ jobs:
         name: gitleaks
         runs-on: ubuntu-latest
         steps:
-          - name: Checkout Code
-            uses: actions/checkout@v3
-    
-          - name: Run Gitleaks
-            uses: gitleaks/gitleaks-action@v2
-            with:
-              github_token: ${{ secrets.GITHUB_TOKEN }}
+        - uses: actions/checkout@v4
+          with:
+            fetch-depth: 0
+        - uses: gitleaks/gitleaks-action@v2
+          env:
+            GITHUB_TOKEN: ${{ secrets.product_catalog_TOKEN }}
     
     Build-with-Docker:
         runs-on: ubuntu-latest
