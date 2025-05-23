@@ -117,7 +117,7 @@ jobs:
               
             - name: Update k8s deployment file
               run: |
-                sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}|" k8s/deployment.yaml
+                sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}|" K8S/deployment.yaml
             
             - name: Commit changes
               run: |
