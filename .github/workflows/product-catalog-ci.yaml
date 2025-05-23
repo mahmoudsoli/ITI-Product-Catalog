@@ -1,4 +1,4 @@
-name: Product Catalog CI
+name: First Product Catalog CI
 on:
   pull_request:
     branches:
