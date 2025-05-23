@@ -113,7 +113,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v4
               with:
-                  token: ${{ secrets.product_catalog_TOKEN }}
+                  token: ${{ secrets.PRODUCT_CATALOG_TOKEN }}
               
             - name: Update k8s deployment file
               run: |
