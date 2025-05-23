@@ -1,4 +1,4 @@
-# iti-product-catalog# Product Catalog Service
+# ITI-Product-Catalog# Product Catalog Service
 
 When this service is run the output should be similar to the following
 
