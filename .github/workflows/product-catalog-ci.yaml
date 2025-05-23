@@ -105,6 +105,29 @@ jobs:
                 file: ./src/Dockerfile
                 push: true
                 tags: ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}
+    
+    Update-Github-Deployment:
+        runs-on: ubuntu-latest
+        needs: Build-with-Docker
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              with:
+                  token: ${{ secrets.product_catalog_TOKEN }}
+              
+            - name: Update k8s deployment file
+              run: |
+                sed -i "s|image: .*|image: ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}|" k8s/deployment.yaml
+            
+            - name: Commit changes
+              run: |
+                git config --global user.email "mahmoudsoliman427@gmail.com"
+                git config --global user.name "mahmoudsoli"
+                git add k8s/deployment.yaml
+                git commit -m "[CI] Update deployment image to ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
+                git push origin HEAD:main -f
+    
+
 
 
               
