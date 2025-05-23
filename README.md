@@ -1,4 +1,4 @@
-# ITI-Product-Catalog# Product Catalog Service from OpenTelemetry Demo Project
+# Product Catalog Service from OpenTelemetry Demo Project
 # Infrastructure Setup with Terraform
 The infrastructure was provisioned using Terraform with the modules approach, which provides better reusability and modularization.
 
