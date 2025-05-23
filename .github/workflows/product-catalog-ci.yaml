@@ -124,7 +124,7 @@ jobs:
                 git config --global user.email "mahmoudsoliman427@gmail.com"
                 git config --global user.name "mahmoudsoli"
                 git add K8S/deployment.yaml
-                git commit -m "[CI] Update deployment image to ${{ secrets.DOCKER_USERNAME }}/product-catalog-service:${{ github.run_id }}"
+                git commit -m "[CI] Update deployment image"
                 git push origin HEAD:main -f
     
 
