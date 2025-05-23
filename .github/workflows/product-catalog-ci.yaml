@@ -1,9 +1,5 @@
-<<<<<<< HEAD
+name: Product Catalog CI
 
-name: First Product Catalog CI
-=======
-name:  Product Catalog CI
->>>>>>> f16fa81e419f47ce5ac462eea005983727cd7bd8
 on:
   pull_request:
     branches:
