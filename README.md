@@ -1,4 +1,4 @@
-# ITI-Product-Catalog# Product Catalog Service
+# ITI-Product-Catalog# Product Catalog Service from OpenTelemetry Demo Project
 # Infrastructure Setup with Terraform
 The infrastructure was provisioned using Terraform with the modules approach, which provides better reusability and modularization.
 
@@ -49,14 +49,6 @@ To retrieve the initial admin password for the Argo CD UI:
 
 ```sh
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode
-```
-
-
-When this service is run the output should be similar to the following
-
-```json
-{"message":"successfully parsed product catalog json","severity":"info","timestamp":"2022-06-02T23:54:10.191283363Z"}
-{"message":"starting grpc server at :3550","severity":"info","timestamp":"2022-06-02T23:54:10.191849078Z"}
 ```
 
 ## Local Build
