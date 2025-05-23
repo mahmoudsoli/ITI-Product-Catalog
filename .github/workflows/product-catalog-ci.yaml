@@ -126,4 +126,4 @@ jobs:
                 git config --global user.name "mahmoudsoli"
                 git add K8S/deployment.yaml
                 git commit -m "[CI] Update deployment image"
-                git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/mahmoudsoli/ITI-Product-Catalog.git HEAD:main -f
+                git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/mahmoudsoli/ITI-Product-Catalog.git HEAD:master -f
