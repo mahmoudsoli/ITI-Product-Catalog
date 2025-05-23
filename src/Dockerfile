@@ -6,13 +6,13 @@ FROM golang:1.22-alpine AS builder
 WORKDIR /usr/src/app/
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
-    --mount=type=bind,source=./src/go.sum,target=go.sum \
-    --mount=type=bind,source=./src/go.mod,target=go.mod \
+    --mount=type=bind,source=./go.sum,target=go.sum \
+    --mount=type=bind,source=./go.mod,target=go.mod \
     go mod download
 
 RUN --mount=type=cache,target=/go/pkg/mod/ \
     --mount=type=cache,target=/root/.cache/go-build \
-    --mount=type=bind,rw,source=./src/.,target=. \
+    --mount=type=bind,rw,source=./.,target=. \
     go build -ldflags "-s -w" -o /go/bin/product-catalog/ ./
 
 FROM alpine AS release
@@ -20,7 +20,7 @@ FROM alpine AS release
 WORKDIR /usr/src/app/
 
 COPY --from=builder /go/bin/product-catalog/ ./
-COPY src/products ./products
+COPY products ./products
 
 EXPOSE ${PRODUCT_CATALOG_PORT}
 ENTRYPOINT [ "./product-catalog" ]

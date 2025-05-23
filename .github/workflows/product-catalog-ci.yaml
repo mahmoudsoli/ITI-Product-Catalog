@@ -1,8 +1,8 @@
-name: Product Catalog CI
+name: First Product Catalog CI
 on:
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
     Code-Quality:
@@ -20,6 +20,7 @@ jobs:
               uses: golangci/golangci-lint-action@v8
               with:
                 version: v2.1
+                working-directory: ./src
             
             - name: Run tests
               run: |
